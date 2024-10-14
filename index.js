@@ -14,12 +14,6 @@ app.get('/cart-total', (req,res)=> {
    res.send(result.toString());
 })
 
-app.get('/calculate-tax', (req,res)=> {
-    let cartTotal=parseFloat(req.query.cartTotal);
-    let result=0.05*cartTotal;
-    res.send(result.toString());
-})
-
 app.get('/membership-discount', (req,res)=> {
     let cartTotal=parseFloat(req.query.cartTotal);
     let isMember=req.query.isMember === 'true';
@@ -48,6 +42,12 @@ app.get('/shipping-cost', (req,res)=> {
 
    let result=weight*distance*0.1;
    res.send(result.toString());
+})
+
+app.get('/calculate-tax', (req, res)=> {
+     let cartTotal = parseFloat(req.query.cartTotal);
+     cartTotal=0.95*cartTotal;
+     res.send(cartTotal.toString());
 })
 
 app.get('/loyalty-points', (req,res)=> {
